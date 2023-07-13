@@ -1,0 +1,25 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- product_detail.html -->
+
+<h1>{{ pupil.id }}</h1>
+<p>{{ pupil.user.first_name }}</p>
+<p>{{ pupil.user.last_name }}</p>
+{#<p>{{ pupil.user. }}</p>#}
+
+    <img src="{{ pupil.user.photo.url }}" alt="{{ pupil.user.first_name }} {{ pupil.user.last_name }}"> </img>
+
+
+<!-- Additional information or styling can be added as per your requirements -->
+<a href="{% url 'home' %}" > Вернуться на главную</a>
+</body>
+</html>

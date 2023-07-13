@@ -1,0 +1,1412 @@
+openapi: 3.0.3
+info:
+  title: School API
+  version: 1.0.0
+  description: API for school
+paths:
+  /api/change-password/:
+    post:
+      operationId: api_change_password_create
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ChangePassword'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/ChangePassword'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/ChangePassword'
+        required: true
+      security:
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ChangePassword'
+          description: ''
+  /api/delete-user/:
+    delete:
+      operationId: api_delete_user_destroy
+      tags:
+      - api
+      security:
+      - tokenAuth: []
+      responses:
+        '204':
+          description: No response body
+  /api/email-verification/:
+    post:
+      operationId: api_email_verification_create
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EmailVerification'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/EmailVerification'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/EmailVerification'
+        required: true
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EmailVerification'
+          description: ''
+  /api/get-news/:
+    get:
+      operationId: api_get_news_list
+      tags:
+      - api
+      security:
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/New'
+          description: ''
+  /api/get-user/:
+    get:
+      operationId: api_get_user_retrieve
+      tags:
+      - api
+      security:
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetUser'
+          description: ''
+  /api/login/:
+    post:
+      operationId: api_login_create
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Login'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Login'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Login'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Login'
+          description: ''
+  /api/logout/:
+    post:
+      operationId: api_logout_create
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/User'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/User'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/User'
+        required: true
+      security:
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+          description: ''
+  /api/new-for-admin/:
+    get:
+      operationId: api_new_for_admin_list
+      tags:
+      - api
+      security:
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/New'
+          description: ''
+    post:
+      operationId: api_new_for_admin_create
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/New'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/New'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/New'
+        required: true
+      security:
+      - tokenAuth: []
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/New'
+          description: ''
+  /api/new-for-admin/{id}/:
+    get:
+      operationId: api_new_for_admin_retrieve
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this new.
+        required: true
+      tags:
+      - api
+      security:
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/New'
+          description: ''
+    put:
+      operationId: api_new_for_admin_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this new.
+        required: true
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/New'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/New'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/New'
+        required: true
+      security:
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/New'
+          description: ''
+    patch:
+      operationId: api_new_for_admin_partial_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this new.
+        required: true
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedNew'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedNew'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedNew'
+      security:
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/New'
+          description: ''
+    delete:
+      operationId: api_new_for_admin_destroy
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this new.
+        required: true
+      tags:
+      - api
+      security:
+      - tokenAuth: []
+      responses:
+        '204':
+          description: No response body
+  /api/pupil/:
+    get:
+      operationId: api_pupil_list
+      parameters:
+      - name: ordering
+        required: false
+        in: query
+        description: Which field to use when ordering the results.
+        schema:
+          type: string
+      - in: query
+        name: school_class
+        schema:
+          type: integer
+      - name: search
+        required: false
+        in: query
+        description: A search term.
+        schema:
+          type: string
+      tags:
+      - api
+      security:
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Pupil'
+          description: ''
+    post:
+      operationId: api_pupil_create
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Pupil'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Pupil'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Pupil'
+      security:
+      - tokenAuth: []
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Pupil'
+          description: ''
+  /api/pupil-register/:
+    post:
+      operationId: api_pupil_register_create
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PupilRegister'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PupilRegister'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PupilRegister'
+        required: true
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PupilRegister'
+          description: ''
+  /api/pupil/{id}/:
+    get:
+      operationId: api_pupil_retrieve
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this pupil.
+        required: true
+      tags:
+      - api
+      security:
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Pupil'
+          description: ''
+    put:
+      operationId: api_pupil_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this pupil.
+        required: true
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Pupil'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Pupil'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Pupil'
+      security:
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Pupil'
+          description: ''
+    patch:
+      operationId: api_pupil_partial_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this pupil.
+        required: true
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedPupil'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedPupil'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedPupil'
+      security:
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Pupil'
+          description: ''
+    delete:
+      operationId: api_pupil_destroy
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this pupil.
+        required: true
+      tags:
+      - api
+      security:
+      - tokenAuth: []
+      responses:
+        '204':
+          description: No response body
+  /api/school-class-for-admin/:
+    get:
+      operationId: api_school_class_for_admin_list
+      tags:
+      - api
+      security:
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/SchoolClassSerializerForAdmin'
+          description: ''
+    post:
+      operationId: api_school_class_for_admin_create
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SchoolClassSerializerForAdmin'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/SchoolClassSerializerForAdmin'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/SchoolClassSerializerForAdmin'
+        required: true
+      security:
+      - tokenAuth: []
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SchoolClassSerializerForAdmin'
+          description: ''
+  /api/school-class-for-admin/{id}/:
+    get:
+      operationId: api_school_class_for_admin_retrieve
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this school class.
+        required: true
+      tags:
+      - api
+      security:
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SchoolClassSerializerForAdmin'
+          description: ''
+    put:
+      operationId: api_school_class_for_admin_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this school class.
+        required: true
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SchoolClassSerializerForAdmin'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/SchoolClassSerializerForAdmin'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/SchoolClassSerializerForAdmin'
+        required: true
+      security:
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SchoolClassSerializerForAdmin'
+          description: ''
+    patch:
+      operationId: api_school_class_for_admin_partial_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this school class.
+        required: true
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedSchoolClassSerializerForAdmin'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedSchoolClassSerializerForAdmin'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedSchoolClassSerializerForAdmin'
+      security:
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SchoolClassSerializerForAdmin'
+          description: ''
+    delete:
+      operationId: api_school_class_for_admin_destroy
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this school class.
+        required: true
+      tags:
+      - api
+      security:
+      - tokenAuth: []
+      responses:
+        '204':
+          description: No response body
+  /api/school-class-for-teacher/{id}/:
+    get:
+      operationId: api_school_class_for_teacher_retrieve
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        required: true
+      tags:
+      - api
+      security:
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SchoolClassSerializerForTeacher'
+          description: ''
+  /api/science-for-admin/:
+    get:
+      operationId: api_science_for_admin_list
+      tags:
+      - api
+      security:
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Science'
+          description: ''
+    post:
+      operationId: api_science_for_admin_create
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Science'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Science'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Science'
+        required: true
+      security:
+      - tokenAuth: []
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Science'
+          description: ''
+  /api/science-for-admin/{id}/:
+    get:
+      operationId: api_science_for_admin_retrieve
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this science.
+        required: true
+      tags:
+      - api
+      security:
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Science'
+          description: ''
+    put:
+      operationId: api_science_for_admin_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this science.
+        required: true
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Science'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Science'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Science'
+        required: true
+      security:
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Science'
+          description: ''
+    patch:
+      operationId: api_science_for_admin_partial_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this science.
+        required: true
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedScience'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedScience'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedScience'
+      security:
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Science'
+          description: ''
+    delete:
+      operationId: api_science_for_admin_destroy
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this science.
+        required: true
+      tags:
+      - api
+      security:
+      - tokenAuth: []
+      responses:
+        '204':
+          description: No response body
+  /api/science-for-teacher/:
+    get:
+      operationId: api_science_for_teacher_list
+      tags:
+      - api
+      security:
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Science'
+          description: ''
+  /api/teacher-register/:
+    post:
+      operationId: api_teacher_register_create
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TeacherRegister'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/TeacherRegister'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/TeacherRegister'
+        required: true
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TeacherRegister'
+          description: ''
+  /api/teachers/:
+    get:
+      operationId: api_teachers_list
+      tags:
+      - api
+      security:
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Teacher'
+          description: ''
+    post:
+      operationId: api_teachers_create
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Teacher'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Teacher'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Teacher'
+      security:
+      - tokenAuth: []
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Teacher'
+          description: ''
+  /api/teachers/{id}/:
+    get:
+      operationId: api_teachers_retrieve
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this teacher.
+        required: true
+      tags:
+      - api
+      security:
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Teacher'
+          description: ''
+    put:
+      operationId: api_teachers_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this teacher.
+        required: true
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Teacher'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Teacher'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Teacher'
+      security:
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Teacher'
+          description: ''
+    patch:
+      operationId: api_teachers_partial_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this teacher.
+        required: true
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedTeacher'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedTeacher'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedTeacher'
+      security:
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Teacher'
+          description: ''
+    delete:
+      operationId: api_teachers_destroy
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this teacher.
+        required: true
+      tags:
+      - api
+      security:
+      - tokenAuth: []
+      responses:
+        '204':
+          description: No response body
+components:
+  schemas:
+    ChangePassword:
+      type: object
+      properties:
+        email:
+          type: string
+        old_password:
+          type: string
+        new_password:
+          type: string
+        new_password2:
+          type: string
+      required:
+      - email
+      - new_password
+      - new_password2
+      - old_password
+    EmailVerification:
+      type: object
+      properties:
+        id:
+          type: integer
+        verification_code:
+          type: string
+          maxLength: 6
+      required:
+      - id
+      - verification_code
+    GetPupil:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        date_of_birth:
+          type: string
+          format: date
+          nullable: true
+        school_class:
+          $ref: '#/components/schemas/GetSchoolClass'
+      required:
+      - id
+      - school_class
+    GetSchoolClass:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        number:
+          type: integer
+          maximum: 2147483647
+          minimum: -2147483648
+          nullable: true
+        letter:
+          type: string
+          maxLength: 10
+        teacher:
+          type: integer
+          nullable: true
+      required:
+      - id
+      - letter
+    GetTeacher:
+      type: object
+      properties:
+        date_of_birth:
+          type: string
+          format: date
+          nullable: true
+    GetUser:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        email:
+          type: string
+          format: email
+          maxLength: 255
+        first_name:
+          type: string
+          nullable: true
+          maxLength: 255
+        last_name:
+          type: string
+          maxLength: 255
+        phone_number:
+          type: string
+          nullable: true
+          maxLength: 128
+        pupil:
+          $ref: '#/components/schemas/GetPupil'
+        teacher:
+          $ref: '#/components/schemas/GetTeacher'
+      required:
+      - email
+      - id
+      - last_name
+      - pupil
+      - teacher
+    Login:
+      type: object
+      properties:
+        email:
+          type: string
+          maxLength: 255
+        password:
+          type: string
+          maxLength: 255
+      required:
+      - email
+      - password
+    New:
+      type: object
+      properties:
+        title:
+          type: string
+          maxLength: 255
+        description:
+          type: string
+        writer:
+          allOf:
+          - $ref: '#/components/schemas/User'
+          readOnly: true
+        for_teacher:
+          type: boolean
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+        updated_at:
+          type: string
+          format: date-time
+          readOnly: true
+      required:
+      - created_at
+      - description
+      - title
+      - updated_at
+      - writer
+    PatchedNew:
+      type: object
+      properties:
+        title:
+          type: string
+          maxLength: 255
+        description:
+          type: string
+        writer:
+          allOf:
+          - $ref: '#/components/schemas/User'
+          readOnly: true
+        for_teacher:
+          type: boolean
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+        updated_at:
+          type: string
+          format: date-time
+          readOnly: true
+    PatchedPupil:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        user:
+          allOf:
+          - $ref: '#/components/schemas/User'
+          readOnly: true
+        date_of_birth:
+          type: string
+          format: date
+          nullable: true
+        school_class:
+          allOf:
+          - $ref: '#/components/schemas/SchoolClass'
+          readOnly: true
+    PatchedSchoolClassSerializerForAdmin:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        number:
+          type: integer
+          maximum: 2147483647
+          minimum: -2147483648
+          nullable: true
+        letter:
+          type: string
+          maxLength: 10
+        teacher:
+          allOf:
+          - $ref: '#/components/schemas/Teacher'
+          readOnly: true
+    PatchedScience:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        name:
+          type: string
+          maxLength: 255
+        teacher:
+          type: array
+          items:
+            $ref: '#/components/schemas/Teacher'
+          readOnly: true
+    PatchedTeacher:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        user:
+          allOf:
+          - $ref: '#/components/schemas/User'
+          readOnly: true
+        school_class:
+          type: array
+          items:
+            $ref: '#/components/schemas/SchoolClassForTeacher'
+          readOnly: true
+    Pupil:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        user:
+          allOf:
+          - $ref: '#/components/schemas/User'
+          readOnly: true
+        date_of_birth:
+          type: string
+          format: date
+          nullable: true
+        school_class:
+          allOf:
+          - $ref: '#/components/schemas/SchoolClass'
+          readOnly: true
+      required:
+      - id
+      - school_class
+      - user
+    PupilRegister:
+      type: object
+      properties:
+        user:
+          $ref: '#/components/schemas/UserRegister'
+        date_of_birth:
+          type: string
+          format: date
+          nullable: true
+      required:
+      - user
+    SchoolClass:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        letter:
+          type: string
+          maxLength: 10
+        number:
+          type: integer
+          maximum: 2147483647
+          minimum: -2147483648
+          nullable: true
+        teacher:
+          allOf:
+          - $ref: '#/components/schemas/Teacher'
+          readOnly: true
+      required:
+      - id
+      - letter
+      - teacher
+    SchoolClassForTeacher:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        number:
+          type: integer
+          maximum: 2147483647
+          minimum: -2147483648
+          nullable: true
+        letter:
+          type: string
+          maxLength: 10
+        teacher:
+          type: integer
+          nullable: true
+      required:
+      - id
+      - letter
+    SchoolClassSerializerForAdmin:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        number:
+          type: integer
+          maximum: 2147483647
+          minimum: -2147483648
+          nullable: true
+        letter:
+          type: string
+          maxLength: 10
+        teacher:
+          allOf:
+          - $ref: '#/components/schemas/Teacher'
+          readOnly: true
+      required:
+      - id
+      - letter
+      - teacher
+    SchoolClassSerializerForTeacher:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        number:
+          type: integer
+          maximum: 2147483647
+          minimum: -2147483648
+          nullable: true
+        letter:
+          type: string
+          maxLength: 10
+        pupils:
+          type: array
+          items:
+            $ref: '#/components/schemas/Pupil'
+          readOnly: true
+        user:
+          type: array
+          items:
+            $ref: '#/components/schemas/User'
+          readOnly: true
+      required:
+      - id
+      - letter
+      - pupils
+      - user
+    Science:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        name:
+          type: string
+          maxLength: 255
+        teacher:
+          type: array
+          items:
+            $ref: '#/components/schemas/Teacher'
+          readOnly: true
+      required:
+      - id
+      - name
+      - teacher
+    Teacher:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        user:
+          allOf:
+          - $ref: '#/components/schemas/User'
+          readOnly: true
+        school_class:
+          type: array
+          items:
+            $ref: '#/components/schemas/SchoolClassForTeacher'
+          readOnly: true
+      required:
+      - id
+      - school_class
+      - user
+    TeacherRegister:
+      type: object
+      properties:
+        user:
+          $ref: '#/components/schemas/UserRegister'
+        date_of_birth:
+          type: string
+          format: date
+          nullable: true
+      required:
+      - user
+    User:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        email:
+          type: string
+          format: email
+          maxLength: 255
+        first_name:
+          type: string
+          nullable: true
+          maxLength: 255
+        last_name:
+          type: string
+          maxLength: 255
+        phone_number:
+          type: string
+          nullable: true
+          maxLength: 128
+      required:
+      - email
+      - id
+      - last_name
+    UserRegister:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        email:
+          type: string
+          format: email
+          maxLength: 255
+        first_name:
+          type: string
+          nullable: true
+          maxLength: 255
+        last_name:
+          type: string
+          maxLength: 255
+        phone_number:
+          type: string
+          nullable: true
+          maxLength: 128
+        password:
+          type: string
+          writeOnly: true
+          maxLength: 128
+      required:
+      - email
+      - id
+      - last_name
+      - password
+  securitySchemes:
+    tokenAuth:
+      type: apiKey
+      in: header
+      name: Authorization
+      description: Token-based authentication with required prefix "Token"

@@ -12,8 +12,6 @@ class Pupil(models.Model):
     school_class = models.ForeignKey(school_class_models.SchoolClass, null=True, on_delete=models.SET_NULL,
                                      related_name='pupils')  # set null если класс удалить то ученики останутся
 
-    def __str__(self):
-        return self.user.first_name
 
     def create_superuser(self, email: str, password: str, **kwargs):
         user = self.create_user(email, password, **kwargs)
@@ -27,5 +25,5 @@ class Pupil(models.Model):
         user.save()
         return user
 
-    def __str__(self):
-        return self.user.email
+    def __str__(self):  # view id
+        return f'{self.id} {self.user.email}'

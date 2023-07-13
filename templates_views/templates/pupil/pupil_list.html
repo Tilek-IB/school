@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title> Pupils </title>
+  <style>
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    th, td {
+      padding: 8px;
+      text-align: left;
+      border-bottom: 1px solid #ddd;
+    }
+
+    th {
+      background-color: #f2f2f2;
+    }
+
+    /* CSS for making the color green */
+    h1 {
+      color: green;
+    }
+
+    a.button {
+      display: inline-block;
+      padding: 10px 20px;
+      background-color: green;
+      color: white;
+      text-decoration: none;
+      border-radius: 4px;
+      transition: background-color 0.3s;
+    }
+
+    a.button:hover {
+      background-color: darkgreen;
+    }
+  </style>
+</head>
+<body>
+  <h1> Ученики </h1>
+
+  <table>
+    <tr>
+      <th> Фамилия </th>
+      <th> Имя </th>
+        <th> Класс </th>
+      <th> День рождения </th>
+
+    </tr>
+    {% for pupil in pupils %}
+    <tr>
+      <td>{{ pupil.user.first_name }}</td>
+      <td> {{ pupil.user.last_name }} </td>
+        {% if pupil.school_class == None %}
+            <td> Отсуствует </td>
+        {% else %}
+            <td> {{ pupil.school_class }} </td>
+        {% endif %}
+      <td> {{ pupil.date_of_birth }} </td>
+      <td><a href="{% url 'pupil_detail' pk=pupil.id %}"> Подробно </a></td>
+    </tr>
+    {% endfor %}
+  </table>
+
+{#  <a href="{% url "create_product" %}" class="button">Добавить новый продукт</a>#}
+
+  <!-- Add more product rows here as needed -->
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>News Cards</title>
+    <style>
+        .news-card {
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 10px;
+            margin-bottom: 10px;
+            background-color: #f9f9f9;
+        }
+
+        .news-title {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .news-description {
+            font-size: 14px;
+            color: #555;
+        }
+
+        .news-image {
+            max-width: 100%;
+            height: auto;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+{% for news in news_list %}
+<div class="news-card">
+    <h2 class="news-title"> {{ news.title }}</h2>
+    <p class="news-description"> {{ news.description }} </p>
+    <p > {{ news.created_at }}</p>
+    <p> {{ news.writer.first_name }}  {{ news.writer.last_name }}</p>
+
+
+{% endfor %}
+</div>
+
+</body>
+</html>

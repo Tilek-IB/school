@@ -24,10 +24,11 @@ class IsPupil(permissions.BasePermission):
     def has_permission(self, request, view):
         if not request.user.is_authenticated:
             return False
+        if not request.user.is_staff:
+            return True
         if request.user.is_verified:
             return True
         return False
-
 
 class IsPupilOfThisClass(permissions.BasePermission):  # проверяет, является ли пользователь учеником этого класса
     def has_permission(self, request, view):  # request.user - это ученик
@@ -37,5 +38,13 @@ class IsPupilOfThisClass(permissions.BasePermission):  # проверяет, я�
             return True
         return False
         if request.user.school_class == SchoolClass.objects.get(id=view.kwargs['pk']):  # если ученик этого класса
+            return True
+        return False
+
+class IsSuperuser(permissions.BasePermission):
+    def has_permission(self, request, view):
+        if not request.user.is_authenticated:
+            return False
+        if request.user.is_superuser:
             return True
         return False

@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>Социальная сеть школы</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #F4F4F4;
+      color: #333333;
+    }
+
+    .header {
+      background-color: #337ab7;
+      color: #FFFFFF;
+      padding: 20px;
+      text-align: center;
+    }
+
+    .logo {
+      width: 150px;
+      height: auto;
+    }
+
+    .content {
+      margin: 20px;
+      padding: 20px;
+      background-color: #FFFFFF;
+      box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    .about-section {
+      margin-bottom: 30px;
+    }
+
+    .about-section h2 {
+      color: #337ab7;
+    }
+
+    .about-section p {
+      line-height: 1.5;
+    }
+
+    .photo-section {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    .photo-section img {
+      max-width: 100%;
+      height: auto;
+      margin-bottom: 10px;
+    }
+
+    .contact-section {
+      margin-bottom: 30px;
+    }
+
+    .contact-section h2 {
+      color: #337ab7;
+    }
+
+    .contact-section p {
+      line-height: 1.5;
+    }
+
+    .navigation-menu {
+      background-color: #337ab7;
+      color: #FFFFFF;
+      padding: 10px;
+      text-align: center;
+    }
+
+    .navigation-menu ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .navigation-menu ul li {
+      display: inline-block;
+      margin: 0 10px;
+    }
+
+    .navigation-menu ul li a {
+      color: #FFFFFF;
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <img class="logo" src="https://st3.depositphotos.com/1007566/13268/v/450/depositphotos_132682306-stock-illustration-school-emblem-frame-icon.jpg" alt="Логотип школы">
+    <h1>Социальная сеть школы</h1>
+  </div>
+
+  <div class="content">
+    <div class="about-section">
+      <h2>О нашей школе</h2>
+      <p>
+        Школа в городе Майлуу Суу предлагает высококачественное образование для учащихся всех возрастов. Наша школа имеет богатую историю и находится в самом сердце прекрасного города Майлуу Суу.
+      </p>
+      <p>
+        Мы предлагаем широкий спектр учебных программ, отличную инфраструктуру и опытных преподавателей, чтобы обеспечить нашим учащимся лучшие возможности для успешного обучения и развития.
+      </p>
+    </div>
+
+    <div class="photo-section">
+      <img src="https://photos.wikimapia.org/p/00/00/13/58/58_big.jpg" alt="">
+    </div>
+
+    <div class="contact-section">
+      <h2>Контактная информация</h2>
+      <p>Адрес: г. Майлуу Суу, Кыргызстан</p>
+      <p>Телефон: +7 123 456 789</p>
+      <p>Email: info@school.com</p>
+    </div>
+  </div>
+
+  <div class="navigation-menu">
+    <ul>
+      <li><a href="{% url "news_list" %}">Новости</a></li>
+    </ul>
+  </div>
+</body>
+</html>
+```

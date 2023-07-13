@@ -54,6 +54,7 @@ LOCAL_APPS = [
     'user',
     'news',
     'sciences',
+    'templates_views',
 ]
 
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
